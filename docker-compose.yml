@@ -1,0 +1,36 @@
+version: '3'
+
+services: 
+    front:
+        stdin_open: true # comme faire un docker run -it
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./frontend
+        volumes: 
+            - /app/node_modules # We map this to nothing that means do not create volume for this folder
+            - ./frontend:/app/
+        # ports: 
+        #     - "3000:3000" # LOCAL_PORT: IMAGE_PORT
+        environment:
+            - API_HOST:api
+            - API_PORT:5001
+        depends_on: 
+            - api
+
+    api:
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./flask-api
+        volumes: 
+            - ./flask-api:/app/
+        # ports:
+        #     - "5000:5001"
+    
+    nginx:
+        stdin_open: true # comme faire un docker run -it
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./nginx
+        ports:
+            - "3000:80"
+        

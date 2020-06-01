@@ -1,0 +1,6 @@
+**.ipynb
+.vscode
+spec-file.txt
+train.py
+**/__pycache__
+src/.ipynb_checkpoints
