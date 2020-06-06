@@ -16,6 +16,3 @@ COPY ./src ./src
 COPY  gunicorn_config.py app.py  wsgi.py   ./
 
 CMD ["gunicorn", "--config", "gunicorn_config.py", "wsgi:app"]
-# CMD ["python", "app.py"] shoud be this one for dev environment but dont want to change port
-
-

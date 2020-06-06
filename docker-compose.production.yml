@@ -1,0 +1,29 @@
+version: '3'
+
+services: 
+    front:
+        build:
+            dockerfile: Dockerfile
+            context: ./frontend
+        image: meacedric/emotiondetection-front
+        environment:
+            - API_HOST:api
+            - API_PORT:5001
+        depends_on: 
+            - api
+
+    api:
+        build:
+            dockerfile: Dockerfile
+            context: ./flask-api
+        image: meacedric/emotiondetection-api
+    
+    nginx:
+        stdin_open: true # comme faire un docker run -it
+        build:
+            dockerfile: Dockerfile
+            context: ./nginx
+        image: meacedric/emotiondetection-nginx
+        ports:
+            - "3000:80"
+        
