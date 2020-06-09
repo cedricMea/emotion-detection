@@ -1,7 +1,7 @@
 from sklearn.compose import ColumnTransformer
 from src import config, utils
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
-import spacy, re, json
+import re, json
 from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
@@ -11,8 +11,8 @@ from nltk.corpus import stopwords
 
 import tensorflow as tf
 import tensorflow.keras as keras
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 from tqdm import tqdm
 

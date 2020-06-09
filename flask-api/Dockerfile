@@ -1,18 +1,14 @@
-FROM python:3.6-slim
+FROM python:3.6-slim 
+
 WORKDIR /app
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 
 COPY ./requirements.txt  .
 
-RUN pip install -r requirements.txt
-RUN python -m nltk.downloader stopwords
-RUN python -m nltk.downloader punkt
-RUN python -m nltk.downloader averaged_perceptron_tagger
-RUN python -m nltk.downloader wordnet
+RUN pip install  --no-cache-dir  -r requirements.txt
+RUN python -m nltk.downloader stopwords punkt averaged_perceptron_tagger wordnet
 
-COPY ./inputs/glove  ./inputs/glove
-COPY ./inputs/contractions.json ./inputs/contractions.json
-COPY ./models  ./models
-COPY ./src ./src 
-COPY  gunicorn_config.py app.py  wsgi.py   ./
+COPY  ./ ./ 
 
 CMD ["gunicorn", "--config", "gunicorn_config.py", "wsgi:app"]

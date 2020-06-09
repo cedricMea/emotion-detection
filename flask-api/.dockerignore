@@ -2,5 +2,15 @@
 .vscode
 spec-file.txt
 train.py
+__py_cache__
 **/__pycache__
 src/.ipynb_checkpoints
+.coverage
+.cache
+.pytest_cache
+inputs/edited_data
+inputs/glove
+inputs/test.txt
+inputs/test_emotion.csv
+inputs/train.txt
+inputs/val.txt

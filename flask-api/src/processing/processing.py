@@ -5,7 +5,6 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import FunctionTransformer
-import spacy
 import re
 from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import SnowballStemmer
@@ -14,6 +13,7 @@ from nltk import pos_tag
 import json
 import pandas as pd
 from nltk.corpus import stopwords
+
 
 stemmer= SnowballStemmer("english")
 lemmatizer=WordNetLemmatizer()
