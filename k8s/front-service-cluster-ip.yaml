@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+    name: front-service-cluster-ip
+
+spec:
+    
+    # ClusterIP est un type de service qui permet de joindre un pod à l'interieur 
+    # d'un Node. Le pod ne pourra pas être joint depuis l'outside word
+    # Pour pouvoir joindre un pod depuis l'outside word on utilise un NodePort
+    # Pas recommandé en production
+
+    type: ClusterIP 
+    selector:
+        component: front-element
+    
+    # On a pas de nodePort dans les ports car il ne recoit pas de requete de l'outside world
+    ports:
+        - port: 3000 # le port a pinger sur le service
+          targetPort: 80  # le port que le service va aller pinger sur le pod/ le container

@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+
+metadata:
+    name: ingress-service
+    annotations:
+        kubernetes.io/ingress.class: nginx # ingress controller based on nginx
+        nginx.ingress.kubernetes.io/rewrite-target: /$1
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: "500"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "500"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "500"
+
+
+
+spec:
+    rules:
+        - http:
+            paths :
+                - path: /?(.*)
+                  backend:
+                    serviceName: front-service-cluster-ip
+                    servicePort: 3000
+                - path: /api/?(.*)
+                  backend:
+                    serviceName: api-service-cluster-ip
+                    servicePort: 5001
+
+# Dans la ligne "nginx.ingress.kubernetes.io/rewrite-target: /$1"  le $1 fait reference au ?(.*) dans les paths
+# Soit en entree le lien dns:port/api/nimporte-quoi
+# il arrive dans ingress /api/nimporte-quoi
+# va matcher le path /api/?(*)
+# le rewirite target ici est $1 = nimporte-quoi
+# nimporte-quoi sera donc redirigé vers le port 5001 du service "api-service-cluster-ip" 
+# le service  "api-service-cluster-ip" va ensuite rediriger la requete vers les bon pods

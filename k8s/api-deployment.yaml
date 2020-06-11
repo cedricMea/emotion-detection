@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: api
+
+spec:
+  replicas: 1  # Number of identical pods to create 
+  selector:  
+    # We want in this deployment pod with matchLabels "component: api"
+    matchLabels:
+      component: api-element
+  
+  # Template is specifications for one pod
+  template:
+    metadata:
+      labels:
+        component: api-element
+    spec:
+      restartPolicy: Always
+      containers:
+      - image: meacedric/emotiondetection-api
+        name: api
+        imagePullPolicy: Always
