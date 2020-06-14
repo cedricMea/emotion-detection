@@ -24,7 +24,7 @@ services:
         volumes: 
             - ./flask-api:/app/
         # ports:
-        #     - "5000:5001"
+        #     - "5000:5000"
     
     nginx:
         stdin_open: true # comme faire un docker run -it

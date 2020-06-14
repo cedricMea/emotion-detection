@@ -18,4 +18,4 @@ spec:
     # On a pas de nodePort dans les ports car il ne recoit pas de requete de l'outside world
     ports:
         - port: 5001 # le port a pinger sur le service
-          targetPort: 5001  # le port que le service va aller pinger sur le pod/ le container
+          targetPort: 5000  # le port que le service va aller pinger sur le pod/ le container
