@@ -45,7 +45,7 @@ class InputForm extends React.Component {
                     <Form.Field>
                         <div className="ui massive icon input" style={{marginTop:"30px"}}>
                             <input 
-                                type="text" placeholder='Entrez une phrase' 
+                                type="text" placeholder='Enter a sentence' 
                                 onChange={(event) => this.setState({sentence: event.target.value})}
                             />
                             <i className='write icon' ></i>
