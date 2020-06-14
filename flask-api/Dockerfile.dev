@@ -9,7 +9,6 @@ RUN python -m nltk.downloader punkt
 RUN python -m nltk.downloader averaged_perceptron_tagger
 RUN python -m nltk.downloader wordnet
 
-COPY ./inputs/glove  ./inputs/glove
 COPY ./inputs/contractions.json ./inputs/contractions.json
 COPY ./models  ./models
 COPY ./src ./src 
