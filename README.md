@@ -27,6 +27,9 @@ This repo is an application for sentiment detection in short sentences. The app 
  `localhost:3000` 
  You will see there the the app running and will be able to test it  
 
+ - This app can also be run with with kubernetes. To do so activate your minikube environment and do `kubetcl apply -f k8s`.
+ The app should be accessible by typing your minukube ip in your browser. 
+
 
 
 
